@@ -26,17 +26,17 @@ anything including nothing) between the template name and the first part of the
 extension.  So you might have the following files for the products/index action:
 
     app/views/products/index.html.erb
-	  app/views/products/index_alt.html.erb
-	  app/views/products/index_new.html.erb
+    app/views/products/index_alt.html.erb
+    app/views/products/index_new.html.erb
 
 Then all you need to do is tell your controller to rotate for that action:
 
 ### app/controllers/products_controller.rb
-		class ProductsController < ApplicationController
-  		guerilla_rotate :index, :show
+    class ProductsController < ApplicationController
+      guerilla_rotate :index, :show
 
-			# etc..
+      # etc..
 
-		end
+    end
 
 Copyright &copy; 2009 Jason King, released under the MIT license
