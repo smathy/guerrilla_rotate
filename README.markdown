@@ -3,7 +3,8 @@ GuerillaRotate
 
 This plugin lets you have multiple view pages for the one action, so that you
 can rotate through different views in order to test which one is the most
-effective.
+effective.  This is known as A/B testing, split testing or side-by-side
+testing.
 
 It will automatically switch between the different views for different web
 requests (uses .rand so is pseudo random, not round-robin or anything).  The
