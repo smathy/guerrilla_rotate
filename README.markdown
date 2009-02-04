@@ -11,7 +11,7 @@ particular view is sticky for a (rails) session, so that once that view has been
 chosen for that visitor they will see the same, consistent view each time.
 
 It integrates automagically into
-(http://github.com/rubaidh/google_analytics)[Rubaidh::GoogleAnalytics] by
+[Rubaidh::GoogleAnalytics](http://github.com/rubaidh/google_analytics) by
 setting the override_trackpageview to the name of the unique view file (instead
 of the action-based URL) so you can track it easily in Google Analytics.
 
