@@ -1,0 +1,1 @@
+require 'guerrilla_rotate'
