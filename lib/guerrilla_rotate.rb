@@ -1,24 +1,27 @@
 module ActionController
 	class Base
     cattr_accessor :guerrilla_paths
-    def self.guerrilla_rotate( *actions )
-      @@guerrilla_paths = {}
-      actions.each do |a|
-        catch (:next_path) do
-          view_paths.each do |vp|
-            Dir.chdir(vp) do
-              gpath = _gr_gpath(controller_name, a)
-              guerrilla_paths[gpath] = Dir.glob(gpath + '*') and
-                throw :next_path
+    class << self
+      def guerrilla_rotate( *actions )
+        @@guerrilla_paths = {}
+        actions.each do |a|
+          catch (:next_path) do
+            view_paths.each do |vp|
+              Dir.chdir(vp) do
+                gpath = _gr_gpath(controller_name, a)
+                guerrilla_paths[gpath] = Dir.glob(gpath + '*') and
+                  throw :next_path
+              end
             end
           end
         end
       end
+      alias_method :guerilla_rotate, :guerrilla_rotate
     end
 
 		protected
-			alias_method :gr_original_render_for_file, :render_for_file
-			def render_for_file( template_path, *others )
+			alias_method_chain :render_for_file, :guerrilla_rotate
+			def render_for_file_with_guerrilla_rotate( template_path, *others )
         gpath = _gr_gpath(controller_name, action_name)
 				if guerrilla_paths.has_key?(gpath)
 					ga = guerrilla_paths[gpath]
@@ -33,7 +36,7 @@ module ActionController
                 :only_path => true)
           end
 				end
-				gr_original_render_for_file( template_path, *others )
+				render_for_file_without_guerrilla_rotate( template_path, *others )
 			end
 
     private

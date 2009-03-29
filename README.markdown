@@ -1,4 +1,4 @@
-GuerillaRotate
+GuerrillaRotate
 ==============
 
 This plugin lets you have multiple view pages for the one action, so that you
@@ -34,10 +34,13 @@ Then all you need to do is tell your controller to rotate for that action:
 
 ### app/controllers/products_controller.rb
     class ProductsController < ApplicationController
-      guerilla_rotate :index, :show
+      guerrilla_rotate :index, :show
 
       # etc..
 
     end
+
+NB: guerrilla_rotate is also aliased as guerilla_rotate for the alternative
+spelling and typos.
 
 Copyright &copy; 2009 Jason King, released under the MIT license
