@@ -20,7 +20,6 @@ module ActionController
     end
 
 		protected
-			alias_method_chain :render_for_file, :guerrilla_rotate
 			def render_for_file_with_guerrilla_rotate( template_path, *others )
         gpath = _gr_gpath(controller_name, action_name)
 				if guerrilla_paths.has_key?(gpath)
@@ -38,6 +37,7 @@ module ActionController
 				end
 				render_for_file_without_guerrilla_rotate( template_path, *others )
 			end
+			alias_method_chain :render_for_file, :guerrilla_rotate
 
     private
       def self._gr_gpath(c,a)
